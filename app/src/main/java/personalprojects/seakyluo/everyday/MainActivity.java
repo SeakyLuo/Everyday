@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView title;
     private ImageButton menu, search;
     private RecyclerView recyclerView;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+//                        title.setText();
                     }
                 }, year, month, day);
                 dialog.show();
@@ -95,9 +94,13 @@ public class MainActivity extends AppCompatActivity {
         setRecyclerView(recyclerView);
     }
 
+    private void moveTo(int position){
+        recyclerView.smoothScrollToPosition(position);
+    }
+
     private void setRecyclerView(RecyclerView recyclerView){
         DiaryAdapter adapter = new DiaryAdapter();
-        adapter.addElements(User.user.getDiaries());
+//        adapter.addElements(User.user.getDiaries());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setSmoothScrollbarEnabled(true);
